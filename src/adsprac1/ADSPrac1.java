@@ -22,10 +22,10 @@ public class ADSPrac1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println(initialize());
+        Box[] list = initializeBoxes();
     }
     
-    public static Box[] initialize() {
+    private static Box[] initializeBoxes() {
         File file = new File("C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"); 
         // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
         // Marjolein's pad: 
@@ -36,16 +36,18 @@ public class ADSPrac1 {
             Logger.getLogger(ADSPrac1.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        Box[] boxesList = new List()<Box>;
-        
         int listSize = scan.nextInt(); // nodig?
+        Box[] boxesList;
+        boxesList = new Box[listSize];
         
-        while (scan.hasNextLine()) {
-            float length = scan.nextFloat();
-            float width = scan.nextFloat();
-            float height = scan.nextFloat();
+        for (int pos = 0; pos<listSize; pos++) {
+            float length = Float.parseFloat(scan.next());
+            float width = Float.parseFloat(scan.next());
+            float height = Float.parseFloat(scan.next());
             Box box = new Box(length, width, height);
-            boxesList.add(box);
+            System.out.println(box.toString());
+            boxesList[pos] = box;
+            
         }
         scan.close();
         
