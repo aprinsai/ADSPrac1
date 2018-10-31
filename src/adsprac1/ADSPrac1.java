@@ -7,6 +7,7 @@ package adsprac1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,6 +50,21 @@ public class ADSPrac1 {
         scan.close();
         
         return boxesList;
+    }
+    
+    public static LinkedList<Box>[] toAdjacencyList(Box[] boxes){
+        //voor ieder paar boxes kijken of de een in de ander past --> functie voor schrijven
+        //als een box1 in box2 past, voeg box2 toe aan LinkedList van box1
+        
+        
+    }
+    
+    /*
+    Returns true if box1 fits into box2
+    */
+    public static boolean fits(Box box1, Box box2){
+        
+        return ()
     }
     
     
