@@ -16,7 +16,7 @@ public class Box {
     private int outEdges;
     
     public Box (float length, float width, float height) {
-        this.height = height;
+        this.length = length;
         this.width = width;
         this.height = height;
         this.outEdges = 0;
@@ -24,5 +24,10 @@ public class Box {
     
     public void setOutEdges (int out) {
         this.outEdges = out; 
+    }
+    
+    public String toString(){
+        String box = length + " " + width + " " + height;
+        return box;
     }
 }
