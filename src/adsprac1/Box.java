@@ -13,14 +13,14 @@ public class Box {
     private float length;
     private float width;
     private float height;
-    private int index;
+    private int id;
     private int outEdges;
     
-    public Box (float length, float width, float height, int index) {
+    public Box (float length, float width, float height, int id) {
         this.length = length;
         this.width = width;
         this.height = height;
-        this.index = index;     //nog even uitzoeken of de index wel nodig is
+        this.id = id;   
         this.outEdges = 0;
     }
     
@@ -45,8 +45,8 @@ public class Box {
         return height;
     }
     
-    public int getIndex(){
-        return index;
+    public int getId(){
+        return id;
     }
     
     public void setLength(float l){

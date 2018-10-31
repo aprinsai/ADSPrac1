@@ -15,21 +15,23 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Anouk
+ * @author Anouk & Mayo
  */
 public class ADSPrac1 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Box[] list = initializeBoxes();
         ArrayList<LinkedList<Box>> adj = toAdjacencyList(list);
         printAdjacencyList(adj);
     }
     
+    /**
+     * Reads the info in the file and
+     * translates that to a list of type Box
+     * @return boxesList
+     */
     private static Box[] initializeBoxes() {
-        File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.1.in"); 
+        File file = new File("C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"); 
         // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
         // Marjolein's pad: "C:\Users\mlmla\Documents\Y3\Algorithms & Data Structures\ADSPrac1\src\sample-A.1.in"
         Scanner scan = null;
@@ -57,10 +59,16 @@ public class ADSPrac1 {
         return boxesList;
     }
     
+    /**
+     * voor ieder paar boxes kijken of de een in de ander past met functie fits()
+     * als een box1 in box2 past, voeg box2 toe aan LinkedList van box1
+     * @param boxes
+     * @return adjacencyList
+     */
     public static ArrayList<LinkedList<Box>> toAdjacencyList(Box[] boxes){
-        //voor ieder paar boxes kijken of de een in de ander past --> functie voor schrijven
-        //als een box1 in box2 past, voeg box2 toe aan LinkedList van box1
+
         ArrayList<LinkedList<Box>> adjacencyList = new ArrayList<LinkedList<Box>>();
+        
         for(Box box1 : boxes){
             LinkedList<Box> list = new LinkedList<Box>();
             for(Box box2 : boxes){
@@ -75,6 +83,8 @@ public class ADSPrac1 {
     
     /*
     Returns true if box1 fits into box2
+    Ik vind de code een beetje lelijk, 
+    misschien kunnen we dit later mooier maken
     */
     public static boolean fits(Box box1, Box box2){
         float l1 = box1.getLength();
@@ -106,10 +116,14 @@ public class ADSPrac1 {
         return false;
     }
     
+    /**
+     * prints the adjacency list in readable format
+     * @param adj 
+     */
     public static void printAdjacencyList(ArrayList<LinkedList<Box>> adj){
         for(LinkedList<Box> list : adj){
             for(Box box : list){
-                System.out.print(box.getIndex() + " ");
+                System.out.print(box.getId() + " ");
             }
             System.out.println("");
         }
