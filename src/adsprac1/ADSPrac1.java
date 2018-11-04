@@ -8,6 +8,7 @@ package adsprac1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -22,8 +23,8 @@ public class ADSPrac1 {
 
     public static void main(String[] args) {
         Box[] list = initializeBoxes();
-        ArrayList<LinkedList<Box>> adj = toAdjacencyList(list);
-        printAdjacencyList(adj);
+        HashMap<Box,LinkedList<Box>> adj = toAdjacencyList(list);
+        //printAdjacencyList(adj);
     }
     
     /**
@@ -66,8 +67,8 @@ public class ADSPrac1 {
      * @param boxes
      * @return adjacencyList
      */
-    public static Hashtable<Box,LinkedList<Box>> toAdjacencyList(Box[] boxes){
-        Hashtable<Box,LinkedList<Box>> adjacencyList = new Hashtable<Box,LinkedList<Box>>();
+    public static HashMap<Box,LinkedList<Box>> toAdjacencyList(Box[] boxes){
+        HashMap<Box,LinkedList<Box>> adjacencyList = new HashMap<Box,LinkedList<Box>>();
         for(int i=0; i<boxes.length; i++){
             LinkedList<Box> list = new LinkedList<Box>();
             Box box1 = boxes[i];
