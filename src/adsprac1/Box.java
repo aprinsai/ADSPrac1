@@ -14,18 +14,16 @@ public class Box {
     private float width;
     private float height;
     private int id;
-    private int outEdges;
+    private Color color;
+    private Box parent;
     
     public Box (float length, float width, float height, int id) {
         this.length = length;
         this.width = width;
         this.height = height;
-        this.id = id;   
-        this.outEdges = 0;
-    }
-    
-    public void setOutEdges (int out) {
-        this.outEdges = out; 
+        this.id = id; 
+        this.color = Color.WHITE;
+        this.parent = null;
     }
     
     public String toString(){
@@ -49,6 +47,14 @@ public class Box {
         return id;
     }
     
+    public Color getColor(){
+        return color;
+    }
+    
+    public Box getParent(){
+        return parent;
+    }
+    
     public void setLength(float l){
         length = l;
     }
@@ -59,5 +65,13 @@ public class Box {
     
     public void setHeight(float h){
         length = h;
+    }
+    
+    public void setColor(Color c){
+        color = c;
+    }
+    
+    public void setParent(Box p){
+        parent = p;
     }
 }

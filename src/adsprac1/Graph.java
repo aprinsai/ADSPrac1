@@ -22,11 +22,12 @@ import java.util.Map.Entry;
  */
 public class Graph {
     private LinkedHashMap<Box,LinkedList<Box>> adj;
+    private int nrTrees;
     
     public Graph(HashMap<Box,LinkedList<Box>> adj) {
+        nrTrees = 0;
         this.adj = new LinkedHashMap<Box,LinkedList<Box>>();
         sortAdjacencyList(adj);
-        
     }
     
     private void sortAdjacencyList(HashMap<Box,LinkedList<Box>> adj){
@@ -37,14 +38,50 @@ public class Graph {
         }
     }
     
+    public void DFS(){
+        for(Entry<Box,LinkedList<Box>> entry : adj.entrySet()){
+            if(entry.getKey().getColor() == Color.WHITE){
+                nrTrees++;
+                DFSVisit(entry.getKey());
+            }
+        }
+    }
+    
+    private void DFSVisit(Box parent) {
+        parent.setColor(Color.GREY);
+        for(Box child : adj.get(parent)){ 
+            if(child.getColor() == Color.WHITE){
+                child.setParent(parent);
+                DFSVisit(child);
+            }
+        }
+        parent.setColor(Color.BLACK);
+    }
+    
     public void printAdjacencyList(){
-        for(Map.Entry<Box,LinkedList<Box>> entry : adj.entrySet()){
+        for(Entry<Box,LinkedList<Box>> entry : adj.entrySet()){
             System.out.println("Box " + entry.getKey().getId());
             System.out.println("Fits into:");
             for(Box box : entry.getValue()){
                 System.out.println("Box " + box.getId());
             }
             System.out.println("");
+        }
+    }
+
+    public int getNrTrees(){
+        return nrTrees;
+    }
+    
+    public void printParents(){
+        for(Entry<Box,LinkedList<Box>> entry : adj.entrySet()){
+            if(entry.getKey().getParent() != null){
+                System.out.println("Box " + entry.getKey().getId() + "has parent " + entry.getKey().getParent().getId());
+            }
+            else{
+                System.out.println("Box " + entry.getKey().getId() + "has no parent");
+            }
+            
         }
     }
 }

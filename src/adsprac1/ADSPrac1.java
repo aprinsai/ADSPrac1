@@ -26,7 +26,9 @@ public class ADSPrac1 {
         HashMap<Box,LinkedList<Box>> adj = toAdjacencyList(list);
         Graph graph = new Graph(adj);
         graph.printAdjacencyList();
-        //printAdjacencyList(adj);
+        graph.DFS();
+        System.out.println("Number of trees in the Depth First Forest: " + graph.getNrTrees());
+        graph.printParents();
     }
     
     /**
@@ -35,7 +37,7 @@ public class ADSPrac1 {
      * @return boxesList
      */
     private static Box[] initializeBoxes() {
-        File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.1.in"); 
+        File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.2.in"); 
         // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
         // Marjolein's pad: "C:\Users\mlmla\Documents\Y3\Algorithms & Data Structures\ADSPrac1\src\sample-A.1.in"
         Scanner scan = null;
@@ -120,16 +122,4 @@ public class ADSPrac1 {
         return false;
     }
     
-    /**
-     * prints the adjacency list in readable format
-     * @param adj 
-     */
-    public static void printAdjacencyList(ArrayList<LinkedList<Box>> adj){
-        for(LinkedList<Box> list : adj){
-            for(Box box : list){
-                System.out.print(box.getId() + " ");
-            }
-            System.out.println("");
-        }
-    }
 }
