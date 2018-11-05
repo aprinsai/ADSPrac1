@@ -22,13 +22,14 @@ import java.util.logging.Logger;
 public class ADSPrac1 {
 
     public static void main(String[] args) {
-        Box[] list = initializeBoxes();
-        HashMap<Box,LinkedList<Box>> adj = toAdjacencyList(list);
-        Graph graph = new Graph(adj);
+        Box[] boxes = initializeBoxes();
+        determineChildren(boxes);
+        Graph graph = new Graph(boxes);
         //graph.printAdjacencyList();
         graph.DFS();
-        System.out.println(graph.getNrTrees());
+        //System.out.println(graph.getNrTrees());
         //graph.printParents();
+        System.out.println(graph.getNrTrees());
     }
     
     /**
@@ -37,15 +38,17 @@ public class ADSPrac1 {
      * @return boxesList
      */
     private static Box[] initializeBoxes() {
-        File file = new File("C:\\\\Users\\\\Anouk\\\\Documents\\\\Third year AI\\\\Algoritmen en Datastructuren\\\\ADSPrac1\\\\src\\\\sample-A.3.in"); 
+        //File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.3.in"); 
         // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
         // Marjolein's pad: "C:\Users\mlmla\Documents\Y3\Algorithms & Data Structures\ADSPrac1\src\sample-A.1.in"
-        Scanner scan = null;
+        /*Scanner scan = null;
         try {
             scan = new Scanner(file);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ADSPrac1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
+        
+        Scanner scan = new Scanner(System.in);
         
         int listSize = scan.nextInt(); // nodig?
         Box[] boxesList;
@@ -72,19 +75,17 @@ public class ADSPrac1 {
      * @param boxes
      * @return adjacencyList
      */
-    public static HashMap<Box,LinkedList<Box>> toAdjacencyList(Box[] boxes){
-        HashMap<Box,LinkedList<Box>> adjacencyList = new HashMap<Box,LinkedList<Box>>();
+    public static void determineChildren(Box[] boxes){
         for(int i=0; i<boxes.length; i++){
-            LinkedList<Box> list = new LinkedList<Box>();
-            Box box2 = boxes[i];
-            for(Box box1 : boxes){
-                if(fits(box1, box2)){
-                    list.add(box1);
+            LinkedList<Box> children = new LinkedList<Box>();
+            Box box1 = boxes[i];
+            for(Box box2 : boxes){
+                if(fits(box2, box1)){
+                    children.add(box2);
                 }
             }
-            adjacencyList.put(box2, list);
+            box1.setChildren(children);
         }
-        return adjacencyList;
     }
     
     /*

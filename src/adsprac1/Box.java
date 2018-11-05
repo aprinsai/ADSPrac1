@@ -5,6 +5,8 @@
  */
 package adsprac1;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author Anouk
@@ -16,6 +18,7 @@ public class Box {
     private int id;
     private Color color;
     private Box parent;
+    private LinkedList<Box> children;
     
     public Box (float length, float width, float height, int id) {
         this.length = length;
@@ -55,6 +58,10 @@ public class Box {
         return parent;
     }
     
+    public LinkedList<Box> getChildren(){
+        return children;
+    }
+    
     public void setLength(float l){
         length = l;
     }
@@ -73,5 +80,9 @@ public class Box {
     
     public void setParent(Box p){
         parent = p;
+    }
+    
+    public void setChildren(LinkedList<Box> c){
+        children = c;
     }
 }
