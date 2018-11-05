@@ -13,6 +13,7 @@ import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 /**
@@ -23,6 +24,7 @@ public class Graph {
     private LinkedHashMap<Box,LinkedList<Box>> adj;
     
     public Graph(HashMap<Box,LinkedList<Box>> adj) {
+        this.adj = new LinkedHashMap<Box,LinkedList<Box>>();
         sortAdjacencyList(adj);
         
     }
@@ -32,6 +34,17 @@ public class Graph {
         Collections.sort(list, new BoxListComparator());
         for(Entry<Box,LinkedList<Box>> entry : list){
             this.adj.put(entry.getKey(), entry.getValue());
+        }
+    }
+    
+    public void printAdjacencyList(){
+        for(Map.Entry<Box,LinkedList<Box>> entry : adj.entrySet()){
+            System.out.println("Box " + entry.getKey().getId());
+            System.out.println("Fits into:");
+            for(Box box : entry.getValue()){
+                System.out.println("Box " + box.getId());
+            }
+            System.out.println("");
         }
     }
 }
