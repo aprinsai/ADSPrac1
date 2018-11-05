@@ -8,6 +8,7 @@ package adsprac1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.LinkedList;
@@ -29,7 +30,7 @@ public class ADSPrac1 {
         graph.DFS();
         //System.out.println(graph.getNrTrees());
         //graph.printParents();
-        System.out.println(graph.getNrTrees());
+        System.out.println(graph.nrVisibleBoxes());
     }
     
     /**
@@ -94,7 +95,7 @@ public class ADSPrac1 {
     misschien kunnen we dit later mooier maken
     */
     public static boolean fits(Box box1, Box box2){
-        float l1 = box1.getLength();
+        /*float l1 = box1.getLength();
         float w1 = box1.getWidth();
         float h1 = box1.getHeight();
         float l2 = box2.getLength();
@@ -120,7 +121,20 @@ public class ADSPrac1 {
             return true;
         }
         
-        return false;
+        return false;/*
+        */
+        
+        float[] dimensions1 = {box1.getLength(), box1.getWidth(), box1.getHeight()};
+        Arrays.sort(dimensions1);
+        float[] dimensions2 = {box2.getLength(), box2.getWidth(), box2.getHeight()};
+        Arrays.sort(dimensions2);
+        
+        if(dimensions1[0] < dimensions2[0] && dimensions1[1] <dimensions2[1] && dimensions1[2] < dimensions2[2]){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
 }

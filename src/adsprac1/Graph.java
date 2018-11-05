@@ -23,10 +23,8 @@ import java.util.Map.Entry;
  */
 public class Graph {
     private LinkedList<Box> adj;
-    private int nrTrees;
     
     public Graph(Box[] boxes) {
-        nrTrees = 0;
         this.adj = new LinkedList<Box>();
         toSortedAdjacencyList(boxes);
     }
@@ -44,31 +42,14 @@ public class Graph {
     }
     
     public void DFS(){
-        /*for(Entry<Box,LinkedList<Box>> entry : adj.entrySet()){
-            if(entry.getKey().getColor() == Color.WHITE){
-                nrTrees++;
-                DFSVisit(entry.getKey());
-            }
-        }*/
-        
         for(Box box : adj){
             if(box.getColor() == Color.WHITE){
-                nrTrees++;
                 DFSVisit(box);
             }
         }
     }
     
     private void DFSVisit(Box parent) {
-        /*parent.setColor(Color.GREY);
-        for(Box child : adj.get(parent)){ 
-            if(child.getColor() == Color.WHITE){
-                child.setParent(parent);
-                DFSVisit(child);
-            }
-        }
-        parent.setColor(Color.BLACK);*/
-        
         parent.setColor(Color.GREY);
         for(Box child : parent.getChildren()){
             if(child.getColor() == Color.WHITE){
@@ -89,10 +70,6 @@ public class Graph {
             System.out.println("");
         }
     }
-
-    public int getNrTrees(){
-        return nrTrees;
-    }
     
     public void printParents(){
         for(Box box: adj){
@@ -104,5 +81,15 @@ public class Graph {
             }
             
         }
+    }
+    
+    public int nrVisibleBoxes(){
+        int nrVisibleBoxes = 0;
+        for(Box box : adj){
+            if(box.getParent() == null){
+                nrVisibleBoxes++;
+            }
+        }
+        return nrVisibleBoxes;
     }
 }
