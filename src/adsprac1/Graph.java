@@ -61,7 +61,7 @@ public class Graph {
     public void printAdjacencyList(){
         for(Entry<Box,LinkedList<Box>> entry : adj.entrySet()){
             System.out.println("Box " + entry.getKey().getId());
-            System.out.println("Fits into:");
+            System.out.println("Can have:");
             for(Box box : entry.getValue()){
                 System.out.println("Box " + box.getId());
             }

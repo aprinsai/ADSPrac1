@@ -25,10 +25,10 @@ public class ADSPrac1 {
         Box[] list = initializeBoxes();
         HashMap<Box,LinkedList<Box>> adj = toAdjacencyList(list);
         Graph graph = new Graph(adj);
-        graph.printAdjacencyList();
+        //graph.printAdjacencyList();
         graph.DFS();
-        System.out.println("Number of trees in the Depth First Forest: " + graph.getNrTrees());
-        graph.printParents();
+        System.out.println(graph.getNrTrees());
+        //graph.printParents();
     }
     
     /**
@@ -37,7 +37,7 @@ public class ADSPrac1 {
      * @return boxesList
      */
     private static Box[] initializeBoxes() {
-        File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.2.in"); 
+        File file = new File("C:\\\\Users\\\\Anouk\\\\Documents\\\\Third year AI\\\\Algoritmen en Datastructuren\\\\ADSPrac1\\\\src\\\\sample-A.3.in"); 
         // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
         // Marjolein's pad: "C:\Users\mlmla\Documents\Y3\Algorithms & Data Structures\ADSPrac1\src\sample-A.1.in"
         Scanner scan = null;
@@ -56,11 +56,11 @@ public class ADSPrac1 {
             float width = Float.parseFloat(scan.next());
             float height = Float.parseFloat(scan.next());
             Box box = new Box(length, width, height, pos);
-            System.out.println(box.toString());
+            //System.out.println(box.toString());
             boxesList[pos] = box;
             
         }
-        System.out.println("");
+        //System.out.println("");
         scan.close();
         
         return boxesList;
@@ -76,13 +76,13 @@ public class ADSPrac1 {
         HashMap<Box,LinkedList<Box>> adjacencyList = new HashMap<Box,LinkedList<Box>>();
         for(int i=0; i<boxes.length; i++){
             LinkedList<Box> list = new LinkedList<Box>();
-            Box box1 = boxes[i];
-            for(Box box2 : boxes){
+            Box box2 = boxes[i];
+            for(Box box1 : boxes){
                 if(fits(box1, box2)){
-                    list.add(box2);
+                    list.add(box1);
                 }
             }
-            adjacencyList.put(box1, list);
+            adjacencyList.put(box2, list);
         }
         return adjacencyList;
     }
