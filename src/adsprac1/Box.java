@@ -19,6 +19,7 @@ public class Box {
     private Color color;
     private Box parent;
     private LinkedList<Box> children;
+    private boolean isParent;
     
     public Box (float length, float width, float height, int id) {
         this.length = length;
@@ -27,6 +28,7 @@ public class Box {
         this.id = id; 
         this.color = Color.WHITE;
         this.parent = null;
+        this.isParent = false;
     }
     
     public String toString(){
@@ -60,6 +62,10 @@ public class Box {
     
     public LinkedList<Box> getChildren(){
         return children;
+    }
+    
+    public boolean getIsParent(){
+        return isParent;
     }
     
     public void setLength(float l){

@@ -24,13 +24,14 @@ public class ADSPrac1 {
 
     public static void main(String[] args) {
         Box[] boxes = initializeBoxes();
-        determineChildren(boxes);
-        Graph graph = new Graph(boxes);
+        boolean[][] adj = createAdjacencyMatrix(boxes);
+        printAdjacencyMatrix(adj);
+        //Graph graph = new Graph(boxes);
         //graph.printAdjacencyList();
-        graph.DFS();
+        //graph.DFS();
         //System.out.println(graph.getNrTrees());
         //graph.printParents();
-        System.out.println(graph.nrVisibleBoxes());
+        //System.out.println(graph.nrVisibleBoxes());
     }
     
     /**
@@ -39,17 +40,17 @@ public class ADSPrac1 {
      * @return boxesList
      */
     private static Box[] initializeBoxes() {
-        //File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.3.in"); 
+        File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.1.in"); 
         // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
         // Marjolein's pad: "C:\Users\mlmla\Documents\Y3\Algorithms & Data Structures\ADSPrac1\src\sample-A.1.in"
-        /*Scanner scan = null;
+        Scanner scan = null;
         try {
             scan = new Scanner(file);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ADSPrac1.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
-        Scanner scan = new Scanner(System.in);
+        //Scanner scan = new Scanner(System.in);
         
         int listSize = scan.nextInt();
         Box[] boxesList;
@@ -75,16 +76,27 @@ public class ADSPrac1 {
      * als een box1 in box2 past, voeg box2 toe aan LinkedList van box1
      * @param boxes
      */
-    public static void determineChildren(Box[] boxes){
+    private static boolean[][] createAdjacencyMatrix(Box[] boxes){
+        int nrBoxes = boxes.length;
+        boolean[][] adj = new boolean[nrBoxes][nrBoxes];
         for(int i=0; i<boxes.length; i++){
-            LinkedList<Box> children = new LinkedList<Box>();
             Box box1 = boxes[i];
-            for(Box box2 : boxes){
-                if(fits(box2, box1)){
-                    children.add(box2);
+            for(int j=0; j<boxes.length; j++){
+                Box box2 = boxes[j];
+                if(fits(box1, box2)){
+                    adj[i][j] = true;
                 }
             }
-            box1.setChildren(children);
+        }
+        return adj;
+    }
+    
+    private static void printAdjacencyMatrix(boolean[][] adj){
+        for(int i=0; i<adj.length; i++){
+            for(int j=0; j<adj[i].length; j++){
+                System.out.print(adj[i][j] + "  ");
+            }
+            System.out.println("");
         }
     }
     

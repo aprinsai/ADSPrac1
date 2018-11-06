@@ -65,11 +65,10 @@ public class Graph {
         parent.setColor(Color.GREY);
         for(Box child : parent.getChildren()){
             if(child.getColor() == Color.WHITE){
-                child.setParent(parent);
+                if(!parent.getIsParent()){
+                    child.setParent(parent);
+                }
                 DFSVisit(child);
-            }
-            {
-                break; // Does this work?
             }
         }
         parent.setColor(Color.BLACK);
