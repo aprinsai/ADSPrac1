@@ -24,7 +24,7 @@ package adsprac1;
  */
 public class BPM {
     
-    int maxBPM(boolean bpGraph[][]) 
+    public int maxBPM(boolean bpGraph[][]) 
     { 
         int N = bpGraph.length;
         int M = bpGraph[0].length;

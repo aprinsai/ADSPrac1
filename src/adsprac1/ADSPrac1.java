@@ -26,6 +26,8 @@ public class ADSPrac1 {
         Box[] boxes = initializeBoxes();
         boolean[][] adj = createAdjacencyMatrix(boxes);
         printAdjacencyMatrix(adj);
+        BPM bpm = new BPM();
+        System.out.println(bpm.maxBPM(adj));
         //Graph graph = new Graph(boxes);
         //graph.printAdjacencyList();
         //graph.DFS();
@@ -40,7 +42,7 @@ public class ADSPrac1 {
      * @return boxesList
      */
     private static Box[] initializeBoxes() {
-        File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.1.in"); 
+        File file = new File("C:\\\\Users\\\\Anouk\\\\Documents\\\\Third year AI\\\\Algoritmen en Datastructuren\\\\ADSPrac1\\\\src\\\\sample-A.1.in"); 
         // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
         // Marjolein's pad: "C:\Users\mlmla\Documents\Y3\Algorithms & Data Structures\ADSPrac1\src\sample-A.1.in"
         Scanner scan = null;
