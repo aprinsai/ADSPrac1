@@ -34,7 +34,7 @@ public class ADSPrac1 {
     }
     
     /**
-     * Reads the info in the file and
+     * Scans the information
      * translates that to a list of type Box
      * @return boxesList
      */
@@ -51,7 +51,7 @@ public class ADSPrac1 {
         
         Scanner scan = new Scanner(System.in);
         
-        int listSize = scan.nextInt(); // nodig?
+        int listSize = scan.nextInt();
         Box[] boxesList;
         boxesList = new Box[listSize];
         
@@ -74,7 +74,6 @@ public class ADSPrac1 {
      * voor ieder paar boxes kijken of de een in de ander past met functie fits()
      * als een box1 in box2 past, voeg box2 toe aan LinkedList van box1
      * @param boxes
-     * @return adjacencyList
      */
     public static void determineChildren(Box[] boxes){
         for(int i=0; i<boxes.length; i++){
@@ -89,41 +88,13 @@ public class ADSPrac1 {
         }
     }
     
-    /*
-    Returns true if box1 fits into box2
-    Ik vind de code een beetje lelijk, 
-    misschien kunnen we dit later mooier maken
-    */
+    /**
+     * Returns true if box1 fits into box2
+     * @param box1
+     * @param box2
+     * @return boolean
+     */
     public static boolean fits(Box box1, Box box2){
-        /*float l1 = box1.getLength();
-        float w1 = box1.getWidth();
-        float h1 = box1.getHeight();
-        float l2 = box2.getLength();
-        float w2 = box2.getWidth();
-        float h2 = box2.getHeight();
-        
-        if(l1 < l2 && w1 < w2 && h1 < h2){
-            return true;
-        }
-        else if(l1 < h2 && w1 < l2 && h1 < w2){
-            return true;
-        }
-        else if(l1 < w2 && w1 < h2 && h1 < l2){
-            return true;
-        }
-        else if(l1 < l2 && w1 < h2 && h1 < w2){
-            return true;
-        }
-        else if(l1 < h2 && w1 < w2 && h1 < l2){
-            return true;
-        }
-        else if(l1 < w2 && w1 < l2 && h1 < h2){
-            return true;
-        }
-        
-        return false;/*
-        */
-        
         float[] dimensions1 = {box1.getLength(), box1.getWidth(), box1.getHeight()};
         Arrays.sort(dimensions1);
         float[] dimensions2 = {box2.getLength(), box2.getWidth(), box2.getHeight()};

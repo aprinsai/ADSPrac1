@@ -5,30 +5,32 @@
  */
 package adsprac1;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  *
- * @author Anouk
+ * @author Anouk & Mayo
  */
 public class Graph {
     private LinkedList<Box> adj;
     
+    /**
+     * Volgens mij is het lelijk om zo die adj te initializeren
+     * @param boxes 
+     */
     public Graph(Box[] boxes) {
         this.adj = new LinkedList<Box>();
         toSortedAdjacencyList(boxes);
     }
     
+    /**
+     * Part of the constructor
+     * sorts adj according to BoxComparator
+     * sorts the children of the boxes according to BoxComparator
+     * @param boxes 
+     */
     private void toSortedAdjacencyList(Box[] boxes){
         LinkedList<Box> adj = new LinkedList(Arrays.asList(boxes));
         Collections.sort(adj, new BoxComparator());
@@ -41,6 +43,9 @@ public class Graph {
         this.adj = adj;
     }
     
+    /**
+     * Does DFS for all boxes with the color WHITE
+     */
     public void DFS(){
         for(Box box : adj){
             if(box.getColor() == Color.WHITE){
@@ -49,6 +54,13 @@ public class Graph {
         }
     }
     
+    /**
+     * The color of the box is set to GREY
+     * We loop through the children of that node and if
+     * the child is not yet explored, we set the current node to its parent
+     * Then recursive call of the function
+     * @param parent 
+     */
     private void DFSVisit(Box parent) {
         parent.setColor(Color.GREY);
         for(Box child : parent.getChildren()){
@@ -56,10 +68,16 @@ public class Graph {
                 child.setParent(parent);
                 DFSVisit(child);
             }
+            {
+                break; // Does this work?
+            }
         }
         parent.setColor(Color.BLACK);
     }
     
+    /**
+     * Readable format of the adjacency list
+     */
     public void printAdjacencyList(){
         for(Box box: adj){
             System.out.print("Box " + box.getId());
@@ -71,6 +89,9 @@ public class Graph {
         }
     }
     
+    /**
+     * Print all parents of all boxes
+     */
     public void printParents(){
         for(Box box: adj){
             if(box.getParent() != null){
@@ -83,6 +104,10 @@ public class Graph {
         }
     }
     
+    /**
+     * returns the number of boxes that are visable
+     * @return 
+     */
     public int nrVisibleBoxes(){
         int nrVisibleBoxes = 0;
         for(Box box : adj){

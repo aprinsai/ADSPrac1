@@ -9,13 +9,13 @@ import java.util.LinkedList;
 
 /**
  *
- * @author Anouk
+ * @author Anouk & Mayo
  */
 public class Box {
     private float length;
     private float width;
     private float height;
-    private int id;
+    private final int id;
     private Color color;
     private Box parent;
     private LinkedList<Box> children;
