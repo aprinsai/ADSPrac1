@@ -38,18 +38,18 @@ public class ADSPrac1 {
      * @return boxesList
      */
     private static Box[] initializeBoxes() {
-        //File file = new File("C:\\\\Users\\\\Anouk\\\\Documents\\\\Third year AI\\\\Algoritmen en Datastructuren\\\\ADSPrac1\\\\src\\\\sample-A.2.in"); 
+        File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.1.in"); 
         // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
         // Marjolein's pad: "C:\Users\mlmla\Documents\Y3\Algorithms & Data Structures\ADSPrac1\src\sample-A.1.in"
-        /**
+        
         Scanner scan = null;
         try {
             scan = new Scanner(file);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ADSPrac1.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
-        Scanner scan = new Scanner(System.in);
+        
+        //Scanner scan = new Scanner(System.in);
         
         int listSize = scan.nextInt();
         Box[] boxesList;
