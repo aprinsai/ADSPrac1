@@ -42,8 +42,6 @@ public class BPM {
         { 
             // For each box b, keep track of the boxes that have been considered to put b into
             boolean[] considered =new boolean[N] ; 
-            //for(int i = 0; i < N; ++i) 
-                //considered[i] = false; 
   
             // Find if there is a box that our box fits into
             if (bpm(bpGraph, box, considered, inside)) 
@@ -51,7 +49,7 @@ public class BPM {
         } 
         return invisible; 
     
-}
+    }
 
     private boolean bpm(boolean[][] bpGraph, int box1, boolean[] considered, int[] inside) {
         for (int box2 = 0; box2 < bpGraph.length; box2++) 

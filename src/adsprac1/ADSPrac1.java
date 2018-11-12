@@ -21,15 +21,8 @@ public class ADSPrac1 {
     public static void main(String[] args) {
         Box[] boxes = initializeBoxes();
         boolean[][] adj = createAdjacencyMatrix(boxes);
-        //printAdjacencyMatrix(adj);
         BPM bpm = new BPM();
         System.out.println(boxes.length - bpm.maxBPM(adj));
-        //Graph graph = new Graph(boxes);
-        //graph.printAdjacencyList();
-        //graph.DFS();
-        //System.out.println(graph.getNrTrees());
-        //graph.printParents();
-        //System.out.println(graph.nrVisibleBoxes());
     }
     
     /**
