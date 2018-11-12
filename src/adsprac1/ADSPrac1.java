@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package adsprac1;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -31,18 +22,7 @@ public class ADSPrac1 {
      * @return boxesList
      */
     private static Box[] initializeBoxes() {
-        File file = new File("C:\\Users\\mlmla\\Documents\\Y3\\Algorithms & Data Structures\\ADSPrac1\\src\\sample-A.1.in"); 
-        // Anouk's pad: "C:\\Users\\Anouk\\Documents\\Third year AI\\Algoritmen en Datastructuren\\ADSPrac1\\src\\sample-A.1.in"
-        // Marjolein's pad: "C:\Users\mlmla\Documents\Y3\Algorithms & Data Structures\ADSPrac1\src\sample-A.1.in"
-        
-        Scanner scan = null;
-        try {
-            scan = new Scanner(file);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ADSPrac1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         
         int listSize = scan.nextInt();
         Box[] boxesList;
@@ -53,19 +33,16 @@ public class ADSPrac1 {
             float width = Float.parseFloat(scan.next());
             float height = Float.parseFloat(scan.next());
             Box box = new Box(length, width, height, pos);
-            //System.out.println(box.toString());
             boxesList[pos] = box;
             
         }
-        //System.out.println("");
         scan.close();
-        
         return boxesList;
     }
     
     /**
-     * voor ieder paar boxes kijken of de een in de ander past met functie fits()
-     * als een box1 in box2 past, voeg box2 toe aan LinkedList van box1
+     * For every pair of boxes, check whether the box1 fits into box2 with fits()
+     * If true, add box2 to LinkedList of box1
      * @param boxes
      */
     private static boolean[][] createAdjacencyMatrix(Box[] boxes){
@@ -81,15 +58,6 @@ public class ADSPrac1 {
             }
         }
         return adj;
-    }
-    
-    private static void printAdjacencyMatrix(boolean[][] adj){
-        for(int i=0; i<adj.length; i++){
-            for(int j=0; j<adj[i].length; j++){
-                System.out.print(adj[i][j] + "  ");
-            }
-            System.out.println("");
-        }
     }
     
     /**
